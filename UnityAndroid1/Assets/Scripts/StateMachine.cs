@@ -49,6 +49,12 @@ public class StateMachine<entity_type> {
         }
     }
 
+    //Revert to previous state
+    public void RevertToPreviousState()
+    {
+        ChangeState(previousState);
+    }
+
     public bool HandleMessage()
     {
         return true;
