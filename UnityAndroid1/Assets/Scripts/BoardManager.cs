@@ -22,10 +22,11 @@ public class BoardManager : MonoBehaviour {
 
     void Start()
     {
-        PlaceWaypoints();
+        //Need code to place player and walls before the waypoints, and mark their position so that waypoint skips over them when looping
+        PlaceObjects(waypoint);
     }
 
-    private void PlaceWaypoints()
+    private void PlaceObjects(Transform toPlace)
     {
         //Get size of board
         boardX = board.transform.localScale.x;
@@ -43,7 +44,7 @@ public class BoardManager : MonoBehaviour {
             for (int j = 0; j <= boardZ; j += 5)
             {
                 //Place waypoints at a corrected height and place into an array for later use?
-                Instantiate(waypoint, new Vector3(i, 0.5f, j), Quaternion.identity, pathHolder);
+                Instantiate(toPlace, new Vector3(i, .5f, j), Quaternion.identity, pathHolder);
             }
         }
 
@@ -52,7 +53,7 @@ public class BoardManager : MonoBehaviour {
         {
             for (int j = 0; j <= boardZ; j += 5)
             {
-                Instantiate(waypoint, new Vector3(i, 0.5f, j), Quaternion.identity, pathHolder);
+                Instantiate(toPlace, new Vector3(i, .5f, j), Quaternion.identity, pathHolder);
             }
         }
 
@@ -61,7 +62,7 @@ public class BoardManager : MonoBehaviour {
         {
             for (int j = 0; j >= -boardZ; j -= 5)
             {
-                Instantiate(waypoint, new Vector3(i, 0.5f, j), Quaternion.identity, pathHolder);
+                Instantiate(toPlace, new Vector3(i, .5f, j), Quaternion.identity, pathHolder);
             }
         }
 
@@ -70,7 +71,7 @@ public class BoardManager : MonoBehaviour {
         {
             for (int j = 0; j >= -boardZ; j -= 5)
             {
-                Instantiate(waypoint, new Vector3(i, 0.5f, j), Quaternion.identity, pathHolder);
+                Instantiate(toPlace, new Vector3(i, .5f, j), Quaternion.identity, pathHolder);
             }
         }
     }

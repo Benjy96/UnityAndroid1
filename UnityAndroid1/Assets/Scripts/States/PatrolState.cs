@@ -34,7 +34,8 @@ public class PatrolState : State<Guard> {
 
     public override void Execute(Guard Entity)
     {
-        throw new NotImplementedException();
+        //if can see player: chase
+        //if CANNOT see player, patrol
     }
 
     public override void Exit(Guard Entity)
@@ -46,4 +47,16 @@ public class PatrolState : State<Guard> {
     {
         throw new NotImplementedException();
     }
+
+    //Private Implementation
+    private bool CanSeePlayer()
+    {
+        return false;
+    }
+
+    private void FollowWaypoints()
+    {
+
+    }
+
 }
