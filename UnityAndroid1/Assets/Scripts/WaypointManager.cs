@@ -13,8 +13,10 @@ public class WaypointManager : MonoBehaviour {
     private float boardX;
     private float boardZ;
 
-    //Object to hold waypoints
+    //Waypoint Holder
     public Transform pathHolder;
+    //Waypoint prefab
+    public Transform waypoint;
 
 	void Start () {
         //Get size of board
@@ -31,6 +33,7 @@ public class WaypointManager : MonoBehaviour {
             for(float j = 0; j <= boardZ; j+=.1f)
             {
                 //Place waypoints at a corrected height and place into an array for later use?
+                Instantiate(waypoint, new Vector3(i, 0.5f, j), Quaternion.identity, pathHolder);
             }
         }
     }
