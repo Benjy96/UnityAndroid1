@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Guard owned state
+/// </summary>
 public class ChaseState : State<Guard>
 {
     private static ChaseState instance;
@@ -24,22 +27,22 @@ public class ChaseState : State<Guard>
         }
     }
 
-    public override void Enter(ref Guard Entity)
+    public override void Enter(Guard Entity)
     {
         throw new NotImplementedException();
     }
 
-    public override void Execute(ref Guard Entity)
+    public override void Execute(Guard Entity)
     {
         throw new NotImplementedException();
     }
 
-    public override void Exit(ref Guard Entity)
+    public override void Exit(Guard Entity)
     {
         throw new NotImplementedException();
     }
 
-    public override bool OnMessage(ref Guard Entity)
+    public override bool OnMessage(Guard Entity)
     {
         throw new NotImplementedException();
     }

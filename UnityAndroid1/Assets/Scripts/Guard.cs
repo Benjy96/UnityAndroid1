@@ -6,9 +6,9 @@ public class Guard : MonoBehaviour {
 
     StateMachine<Guard> FSM;
 
-	// Use this for initialization
-	void Start () {
-        FSM = new StateMachine<Guard>();
+    // Use this for initialization
+    void Start () {
+        FSM = new StateMachine<Guard>(this);
 	}
 	
 	// Update is called once per frame
