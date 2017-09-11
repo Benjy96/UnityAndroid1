@@ -13,11 +13,26 @@ public class WaypointManager : MonoBehaviour {
     private float boardX;
     private float boardZ;
 
-	// Use this for initialization
+    //Object to hold waypoints
+    public Transform pathHolder;
+
 	void Start () {
+        //Get size of board
         boardX = board.transform.localScale.x;
         boardZ = board.transform.localScale.z;
 
+        //Need to fill the board with waypoints
+        //Unity large squares are made up of 10 smaller squares
+        //e.g. one x = 10 small inside it. Let's put 10 waypoints per 1 on x/y/z axis.
+
+        //Fill the board with waypoints - we want to increment in tenths of X
+        for(float i = 0; i <= boardX; i+=.1f)
+        {
+            for(float j = 0; j <= boardZ; j+=.1f)
+            {
+                //Place waypoints at a corrected height and place into an array for later use?
+            }
+        }
     }
 	
 	// Update is called once per frame
