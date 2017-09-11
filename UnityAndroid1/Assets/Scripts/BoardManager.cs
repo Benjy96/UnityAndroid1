@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// With this class I want to assign waypoints along the board, like the way you would assign tiles to a 2D game with a board manager.
-/// I will get the size of the board, then loop through the board, disregarding spaces taken up through the board (by gameobjects) and place waypoints for the guards to follow.
+/// This class replaces waypoint manager.
+/// Will instantiate player, guards, and obstacles within this script.
+/// This will allow me to check whether or not a space is taken, and allow me to choose
+/// whether or not a waypoint should be placed there. (Waypoints should only go in free space.)
 /// </summary>
-public class WaypointManager : MonoBehaviour {
+public class BoardManager : MonoBehaviour {
 
     //Board and its size along horizontal/vertical
     public GameObject board;
@@ -18,14 +20,10 @@ public class WaypointManager : MonoBehaviour {
     //Waypoint prefab
     public Transform waypoint;
 
-	void Start () {
+    void Start()
+    {
         PlaceWaypoints();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     private void PlaceWaypoints()
     {
