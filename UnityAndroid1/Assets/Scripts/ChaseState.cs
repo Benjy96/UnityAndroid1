@@ -8,6 +8,8 @@ public class ChaseState : States<GameObject>
     private static ChaseState instance;
     private ChaseState() { }
 
+    //PUBLIC INTERFACE
+
     public static ChaseState GetSingleton()
     {
         if (instance == null)
@@ -21,8 +23,6 @@ public class ChaseState : States<GameObject>
             return instance;
         }
     }
-
-    //PUBLIC INTERFACE
 
     public override void Enter(GameObject Entity)
     {

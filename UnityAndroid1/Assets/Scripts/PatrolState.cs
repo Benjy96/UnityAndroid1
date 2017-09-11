@@ -8,9 +8,11 @@ public class PatrolState : States<GameObject> {
     private static PatrolState instance;
     private PatrolState() {}
 
+    //PUBLIC INTERFACE
+
     public static PatrolState GetSingleton()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = new PatrolState();
 
@@ -21,8 +23,6 @@ public class PatrolState : States<GameObject> {
             return instance;
         }
     }
-
-    //PUBLIC INTERFACE
 
     public override void Enter(GameObject Entity)
     {
