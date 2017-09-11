@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// This class provides some abstraction.
 /// The Finite State Machine manages the states of an agent/entity.
+/// Agent just needs to own a StateMachine instance. (Composition)
 /// </summary>
 /// <typeparam name="entity_type"></typeparam>
 public class StateMachine<entity_type> {
@@ -17,8 +18,8 @@ public class StateMachine<entity_type> {
 
     //Construct & Initialize the FSM
     public StateMachine(entity_type owner) { this.owner = owner; }
-    void SetCurrentState(State<entity_type> s) { currentState = s; }
-    void SetPreviousState(State<entity_type> s) { previousState = s; }
+    public void SetCurrentState(State<entity_type> s) { currentState = s; }
+    public void SetPreviousState(State<entity_type> s) { previousState = s; }
 
     // ACCESSORS - READ ONLY//
     State<entity_type> CurrentState() { return currentState; }
