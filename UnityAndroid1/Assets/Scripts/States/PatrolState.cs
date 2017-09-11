@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrolState : State<GameObject> {
+public class PatrolState : State<Guard> {
 
     private static PatrolState instance;
     private PatrolState() {}
@@ -24,22 +24,22 @@ public class PatrolState : State<GameObject> {
         }
     }
 
-    public override void Enter(ref GameObject Entity)
+    public override void Enter(ref Guard Entity)
     {
         throw new NotImplementedException();
     }
 
-    public override void Execute(ref GameObject Entity)
+    public override void Execute(ref Guard Entity)
     {
         throw new NotImplementedException();
     }
 
-    public override void Exit(ref GameObject Entity)
+    public override void Exit(ref Guard Entity)
     {
         throw new NotImplementedException();
     }
 
-    public override bool OnMessage(ref GameObject Entity)
+    public override bool OnMessage(ref Guard Entity)
     {
         throw new NotImplementedException();
     }
