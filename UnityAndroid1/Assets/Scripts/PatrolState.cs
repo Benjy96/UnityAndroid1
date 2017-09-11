@@ -5,6 +5,20 @@ using UnityEngine;
 
 public class PatrolState : States<GameObject> {
 
+    static PatrolState Singleton()
+    {
+        PatrolState instance = new PatrolState();
+
+        return instance;
+    }
+
+    private PatrolState()
+    {
+
+    }
+
+    //PUBLIC INTERFACE
+
     public override void Enter(GameObject Entity)
     {
         throw new NotImplementedException();

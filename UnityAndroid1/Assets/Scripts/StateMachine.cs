@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class StateMachine<T> : MonoBehaviour {
 
-    private void Update()
+    void UpdateState()
     {
-        
+
     }
 
     void ChangeState(T Entity)

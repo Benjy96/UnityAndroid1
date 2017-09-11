@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Guard : MonoBehaviour {
 
+
+
 	// Use this for initialization
 	void Start () {
         StateMachine<Guard> FSM = new StateMachine<Guard>();

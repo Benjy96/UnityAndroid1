@@ -5,6 +5,19 @@ using UnityEngine;
 
 public class ChaseState : States<GameObject>
 {
+    
+    static ChaseState Singleton()
+    {
+        ChaseState instance = new ChaseState();
+
+        return instance;
+    }
+
+    private ChaseState()
+    {
+
+    }
+
     public override void Enter(GameObject Entity)
     {
         throw new NotImplementedException();
