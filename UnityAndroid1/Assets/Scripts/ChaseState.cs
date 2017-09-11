@@ -8,7 +8,7 @@ public class ChaseState : States<GameObject>
     private static ChaseState instance;
     private ChaseState() { }
 
-    public static ChaseState Singleton()
+    public static ChaseState GetSingleton()
     {
         if (instance == null)
         {

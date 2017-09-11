@@ -8,7 +8,7 @@ public class PatrolState : States<GameObject> {
     private static PatrolState instance;
     private PatrolState() {}
 
-    public static PatrolState Singleton()
+    public static PatrolState GetSingleton()
     {
         if(instance == null)
         {
