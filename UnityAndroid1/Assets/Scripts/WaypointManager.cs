@@ -33,7 +33,7 @@ public class WaypointManager : MonoBehaviour {
         //Unity large squares are made up of 10 smaller squares
         //e.g. one x = 10 small inside it. Let's put 10 waypoints per 1 on x/y/z axis.
 
-        //Fills left of the board with waypoints - we want to increment in tenths of X
+        //Fill top left quadrant
         for(int i = 0; i <= boardX; i+=5)
         {
             for(int j = 0; j <= boardZ; j+=5)
@@ -43,6 +43,25 @@ public class WaypointManager : MonoBehaviour {
             }
         }
 
+        //Fill bottom left quadrant
+        for(int i = 0; i >= -boardX; i -= 5)
+        {
+            for (int j = 0; j <= boardZ; j += 5)
+            {
+                Instantiate(waypoint, new Vector3(i, 0.5f, j), Quaternion.identity, pathHolder);
+            }
+        }
+        
+        //Fill top right quadrant
+        for(int i = 0; i < boardX; i += 5)
+        {
+            for(int j = 0; j >= -boardZ; j -= 5)
+            {
+                Instantiate(waypoint, new Vector3(i, 0.5f, j), Quaternion.identity, pathHolder);
+            }
+        }
+
+        //Fill bottom right quadrant
         
     }
 	
