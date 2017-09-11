@@ -62,7 +62,13 @@ public class WaypointManager : MonoBehaviour {
         }
 
         //Fill bottom right quadrant
-        
+        for(int i = 0; i >= -boardX; i -= 5)
+        {
+            for(int j = 0; j >= -boardZ; j -= 5)
+            {
+                Instantiate(waypoint, new Vector3(i, 0.5f, j), Quaternion.identity, pathHolder);
+            }
+        }
     }
 	
 	// Update is called once per frame
