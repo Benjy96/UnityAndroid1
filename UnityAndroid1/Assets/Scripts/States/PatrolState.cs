@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Guard owned state
+/// SINGLETON - Guard owned state
 /// </summary>
 public class PatrolState : State<Guard> {
 

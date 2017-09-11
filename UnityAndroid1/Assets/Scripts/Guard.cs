@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Guard : MonoBehaviour {
 
-    //Private:
+    //Instance of a Finite State Machine
     StateMachine<Guard> stateMachine;
 
     //Attributes
     private float speed;
 
-    // Use this for initialization
+    //Initialize a finite state machine
     void Start () {
         stateMachine = new StateMachine<Guard>(this);
         stateMachine.SetCurrentState(PatrolState.GetSingleton());
