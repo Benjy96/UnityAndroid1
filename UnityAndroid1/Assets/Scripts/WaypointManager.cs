@@ -26,21 +26,24 @@ public class WaypointManager : MonoBehaviour {
         //Adjust scale to co-ordinates in world
         boardX *= 5;
         boardZ *= 5;
+        boardX--;
+        boardZ--;
 
         //Need to fill the board with waypoints
         //Unity large squares are made up of 10 smaller squares
         //e.g. one x = 10 small inside it. Let's put 10 waypoints per 1 on x/y/z axis.
 
-        //Fill the board with waypoints - we want to increment in tenths of X
+        //Fills left of the board with waypoints - we want to increment in tenths of X
         for(int i = 0; i <= boardX; i++)
         {
             for(int j = 0; j <= boardZ; j++)
             {
                 //Place waypoints at a corrected height and place into an array for later use?
-                print(i);
                 Instantiate(waypoint, new Vector3(i, 0.5f, j), Quaternion.identity, pathHolder);
             }
         }
+
+        
     }
 	
 	// Update is called once per frame
