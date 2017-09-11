@@ -15,14 +15,15 @@ public class StateMachine<entity_type> {
 
     //PUBLIC INTERFACE
 
-    public StateMachine(entity_type owner)
-    {
-        this.owner = owner;
-    }
-
-    //Initialize the FSM
+    //Construct & Initialize the FSM
+    public StateMachine(entity_type owner) { this.owner = owner; }
     void SetCurrentState(State<entity_type> s) { currentState = s; }
     void SetPreviousState(State<entity_type> s) { previousState = s; }
+
+    // ACCESSORS - READ ONLY//
+    State<entity_type> CurrentState() { return currentState; }
+    State<entity_type> PreviousState() { return previousState; }
+    // ACCESSORS - READ ONLY//
 
     //Update the FSM
     public void UpdateState()
