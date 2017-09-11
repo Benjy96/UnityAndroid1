@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class StateMachine<T> : MonoBehaviour {
 
-    void UpdateState()
+    public void UpdateState()
     {
 
     }
 
-    void ChangeState(T Entity)
+    public void ChangeState(T Entity)
     {
 
     }
 
-    bool HandleMessage()
+    public bool HandleMessage()
     {
         return true;
     }

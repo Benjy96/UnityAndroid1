@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Guard : MonoBehaviour {
 
-
+    StateMachine<Guard> FSM;
 
 	// Use this for initialization
 	void Start () {
-        StateMachine<Guard> FSM = new StateMachine<Guard>();
+        FSM = new StateMachine<Guard>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        FSM.UpdateState();
 	}
 
     bool HandleMessage()
