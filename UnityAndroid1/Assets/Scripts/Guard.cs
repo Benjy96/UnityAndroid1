@@ -28,4 +28,9 @@ public class Guard : MonoBehaviour {
     {
         return false;
     }
+
+    public void testThis()
+    {
+
+    }
 }

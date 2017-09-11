@@ -6,11 +6,12 @@ using UnityEngine;
 /// This class provides some abstraction.
 /// The Finite State Machine manages the states of an agent/entity.
 /// Agent just needs to own a StateMachine instance. (Composition)
+/// The generics mean we can reuse this class. E.g. Any called state will have access to public interface of the object. E.g. spotlight attribute on a guard passed in with execute method. Owner.spotlight.
 /// </summary>
-/// <typeparam name="entity_type"></typeparam>
+/// <typeparam name="entity_type">The object that owns this statemachine</typeparam>
 public class StateMachine<entity_type> {
 
-    private entity_type owner;
+    private entity_type owner;  //If guard, you get access to guard methods in this variable, if was a special type of guard, access to its stuff
     private State<entity_type> currentState;
     private State<entity_type> previousState;
 
@@ -31,7 +32,7 @@ public class StateMachine<entity_type> {
     {
         if (currentState != null)
         {
-            currentState.Execute(owner);
+            currentState.Execute(owner);    //owner variable means that states can access public methods (e.g. to modify attributes)
         }
     }
 
