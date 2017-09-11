@@ -29,11 +29,15 @@ public class ChaseState : State<Guard>
 
     public override void Enter(Guard Entity)
     {
+        //Turn to face player - Set flashlight color to red, and send a message to nearby guards
+        //IF ALERTED BY NEARBY GUARD - Turn to face the player, but DON'T send message to nearby (or it'd alert everyone - maybe for higher difficulty this would be good)
         throw new NotImplementedException();
     }
 
     public override void Execute(Guard Entity)
     {
+        //End game if the player is sighted for more than a set period of time
+        //ADVANCED (DO AFTER ALL DONE) -Disregard waypoint path and follow the player (navmesh?)
         throw new NotImplementedException();
     }
 
