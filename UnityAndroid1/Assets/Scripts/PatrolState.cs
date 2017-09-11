@@ -5,16 +5,21 @@ using UnityEngine;
 
 public class PatrolState : States<GameObject> {
 
-    static PatrolState Singleton()
+    private static PatrolState instance;
+    private PatrolState() {}
+
+    public static PatrolState Singleton()
     {
-        PatrolState instance = new PatrolState();
+        if(instance == null)
+        {
+            instance = new PatrolState();
 
-        return instance;
-    }
-
-    private PatrolState()
-    {
-
+            return instance;
+        }
+        else
+        {
+            return instance;
+        }
     }
 
     //PUBLIC INTERFACE
