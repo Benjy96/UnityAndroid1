@@ -34,9 +34,9 @@ public class WaypointManager : MonoBehaviour {
         //e.g. one x = 10 small inside it. Let's put 10 waypoints per 1 on x/y/z axis.
 
         //Fills left of the board with waypoints - we want to increment in tenths of X
-        for(int i = 0; i <= boardX; i++)
+        for(int i = 0; i <= boardX; i+=5)
         {
-            for(int j = 0; j <= boardZ; j++)
+            for(int j = 0; j <= boardZ; j+=5)
             {
                 //Place waypoints at a corrected height and place into an array for later use?
                 Instantiate(waypoint, new Vector3(i, 0.5f, j), Quaternion.identity, pathHolder);
