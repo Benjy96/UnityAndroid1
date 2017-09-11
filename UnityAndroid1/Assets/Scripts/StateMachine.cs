@@ -20,9 +20,11 @@ public class StateMachine<entity_type> {
         this.owner = owner;
     }
 
+    //Initialize the FSM
     void SetCurrentState(State<entity_type> s) { currentState = s; }
     void SetPreviousState(State<entity_type> s) { previousState = s; }
 
+    //Update the FSM
     public void UpdateState()
     {
         if (currentState != null)
@@ -31,9 +33,20 @@ public class StateMachine<entity_type> {
         }
     }
 
-    public void ChangeState(entity_type Entity)
+    //Change to a new state
+    public void ChangeState(State<entity_type> newState)
     {
-
+        if (newState != null)
+        {
+            previousState = currentState;
+            currentState.Exit(owner);
+            currentState = newState;
+            currentState.Enter(owner);
+        }
+        else
+        {
+            throw new System.Exception("Trying to switch to an invalid state");
+        }
     }
 
     public bool HandleMessage()
