@@ -22,6 +22,7 @@ public class BoardManager : MonoBehaviour {
     public Transform pathHolder;
     public Transform waypoint;
     public Transform player;
+    public Transform wallParent;
     public Transform wallObject;
 
     void Start()
@@ -41,10 +42,19 @@ public class BoardManager : MonoBehaviour {
         numPositions = spawnPositions.Count;
         print(numPositions);
 
-        // TODO: Need code to place player and walls before the waypoints, and mark their position so that waypoint skips over them when looping
-        //PlaceObjects(waypoint, .5f, pathHolder);
+        // TODO: Need code to place player and walls before the waypoints, and remove their potential position so that waypoint skips over them when looping
+        PlaceObjects(player, 1f, null, 1);
+        //PlaceObjects(wallObject, 1f, wallParent, x)
+        //PlaceObjects(waypoint, .5f, pathHolder, x);
     }
 
+    /// <summary>
+    /// Randomly spawn objects on the board using the potential spawnPositions list. Remove points from list once assigned to.
+    /// </summary>
+    /// <param name="toPlace"></param>
+    /// <param name="yAxisHeight"></param>
+    /// <param name="parent"></param>
+    /// <param name="howMany"></param>
     private void PlaceObjects(Transform toPlace, float yAxisHeight, Transform parent, int howMany)
     {
         while (spawnPositions.Count >= 0 && howMany > 0)   
@@ -59,17 +69,16 @@ public class BoardManager : MonoBehaviour {
         }
     }
 
-    //what if we loop through a list and every entry is a possible spawn point? then we can REMOVE the spawn points from the list with a list's functionality
+    /// <summary>
+    /// Create a List of Vector3s containing potential spawn points
+    /// </summary>
     private void MarkSpawnPoints()
     {
-        int calculateNumBoardPositions = 0;
-
         //Fill top left quadrant
         for (int i = 0; i <= boardX; i += 5)
         {
             for (int j = 0; j <= boardZ; j += 5)
             {
-                calculateNumBoardPositions++;
                 spawnPositions.Add(new Vector3(i, 0f, j));
             }
         }
