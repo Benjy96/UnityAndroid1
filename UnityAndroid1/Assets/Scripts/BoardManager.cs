@@ -8,8 +8,6 @@ using UnityEngine;
 /// whether or not a waypoint should be placed there. (Waypoints should only go in free space.)
 /// </summary>
 public class BoardManager : MonoBehaviour {
-
-    private int numPositions;
     
     //Board and its size along horizontal/vertical
     public GameObject board;
@@ -39,13 +37,11 @@ public class BoardManager : MonoBehaviour {
 
         spawnPositions = new List<Vector3>();
         MarkSpawnPoints();
-        numPositions = spawnPositions.Count;
-        print(numPositions);
 
-        // TODO: Need code to place player and walls before the waypoints, and remove their potential position so that waypoint skips over them when looping
+        // TODO: Need code to place player and walls before the waypoints, and remove their potential position so that waypoint skips over them when looping.
         PlaceObjects(player, 1f, null, 1);
-        //PlaceObjects(wallObject, 1f, wallParent, x)
-        //PlaceObjects(waypoint, .5f, pathHolder, x);
+        PlaceObjects(wallObject, 1f, wallParent, 5);
+        PlaceObjects(waypoint, .5f, pathHolder, 10);
     }
 
     /// <summary>
@@ -70,7 +66,9 @@ public class BoardManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Create a List of Vector3s containing potential spawn points
+    /// Create a List of Vector3s containing potential spawn points.
+    /// Increment the spawn points in +=5 allows boxes to sit beside each other perfectly. (Box has scale 5/5/5/)
+    /// e.g. x co-ordinate (Transform.position.x) increments by 5
     /// </summary>
     private void MarkSpawnPoints()
     {
