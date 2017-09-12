@@ -38,7 +38,7 @@ public class BoardManager : MonoBehaviour {
 
         spawnPositions = new List<Vector3>();
         MarkSpawnPoints();
-        numPositions = CalculateNumSpawnPoints();
+        numPositions = spawnPositions.Count;
         print(numPositions);
 
         // TODO: Need code to place player and walls before the waypoints, and mark their position so that waypoint skips over them when looping
@@ -100,12 +100,5 @@ public class BoardManager : MonoBehaviour {
                 spawnPositions.Add(new Vector3(i, 0f, j));
             }
         }
-        calculateNumBoardPositions *= 4;
-        print(calculateNumBoardPositions);  //Test vs List count for debug purposes - just checking for potential index offset
-    }
-
-    private int CalculateNumSpawnPoints()
-    {
-        return spawnPositions.Count;
     }
 }
