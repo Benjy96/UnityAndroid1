@@ -38,10 +38,11 @@ public class BoardManager : MonoBehaviour {
         spawnPositions = new List<Vector3>();
         MarkSpawnPoints();
 
-        // TODO: Need code to place player and walls before the waypoints, and remove their potential position so that waypoint skips over them when looping.
+        // TODO: Implement way of dynamically calculating the maximum number of objects that can be placed on the board
+        // TODO: Implement difficulty system that then affects the above max number (for guards)
         PlaceObjects(player, 1f, null, 1);
-        PlaceObjects(wallObject, 1f, wallParent, 5);
-        PlaceObjects(waypoint, .5f, pathHolder, 10);
+        PlaceObjects(wallObject, 1.0f, wallParent, 5);
+        PlaceObjects(waypoint, .5f, pathHolder, 30);
     }
 
     /// <summary>
