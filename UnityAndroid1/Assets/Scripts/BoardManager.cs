@@ -17,23 +17,30 @@ public class BoardManager : MonoBehaviour {
     //Store potential object locations
     private List<Vector3> spawnPositions;
 
+    //GameObjects to be placed on the board
     public Transform pathHolder;
     public Transform waypoint;
+
     public Transform player;
+
     public Transform wallParent;
     public Transform wallObject;
+
+    public Transform finishPoint;
+    public Transform guardHolder;
+    public Transform guard;
 
     void Start()
     {
         CalculateBoardSize();
         spawnPositions = new List<Vector3>();
         MarkSpawnPoints();
-
         // TODO: Implement way of dynamically calculating the maximum number of objects that can be placed on the board
         // TODO: Implement difficulty system that then affects the above max number (for guards)
         PlaceObjects(player, 1f, null, 1);
         PlaceObjects(wallObject, 2.5f, wallParent, 5);
-        PlaceObjects(waypoint, .5f, pathHolder, 30);
+        PlaceObjects(guard, 1f, guardHolder, 10);   // TODO: Need the howMany to be done with a difficulty variable
+        PlaceObjects(waypoint, .5f, pathHolder, spawnPositions.Count);      //DO LAST: Fill the rest of the board with waypoints
     }
 
     private void CalculateBoardSize()
