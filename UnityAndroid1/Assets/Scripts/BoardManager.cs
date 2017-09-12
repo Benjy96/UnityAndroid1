@@ -41,7 +41,7 @@ public class BoardManager : MonoBehaviour {
         // TODO: Implement way of dynamically calculating the maximum number of objects that can be placed on the board
         // TODO: Implement difficulty system that then affects the above max number (for guards)
         PlaceObjects(player, 1f, null, 1);
-        PlaceObjects(wallObject, 1.0f, wallParent, 5);
+        PlaceObjects(wallObject, 2.5f, wallParent, 5);
         PlaceObjects(waypoint, .5f, pathHolder, 30);
     }
 
