@@ -25,16 +25,7 @@ public class BoardManager : MonoBehaviour {
 
     void Start()
     {
-        //Get size of board
-        boardX = board.transform.localScale.x;
-        boardZ = board.transform.localScale.z;
-
-        //Adjust scale to co-ordinates in world (5 small squares per half of plane) - each increment of 1 on scale increases by 5 small squares on each side
-        boardX *= 5;
-        boardZ *= 5;
-        boardX--;
-        boardZ--;
-
+        CalculateBoardSize();
         spawnPositions = new List<Vector3>();
         MarkSpawnPoints();
 
@@ -45,25 +36,17 @@ public class BoardManager : MonoBehaviour {
         PlaceObjects(waypoint, .5f, pathHolder, 30);
     }
 
-    /// <summary>
-    /// Randomly spawn objects on the board using the potential spawnPositions list. Remove points from list once assigned to.
-    /// </summary>
-    /// <param name="toPlace"></param>
-    /// <param name="yAxisHeight"></param>
-    /// <param name="parent"></param>
-    /// <param name="howMany"></param>
-    private void PlaceObjects(Transform toPlace, float yAxisHeight, Transform parent, int howMany)
+    private void CalculateBoardSize()
     {
-        while (spawnPositions.Count >= 0 && howMany > 0)   
-        {
-            //Get a random spawn position
-            int randomIndex = Random.Range(0, spawnPositions.Count);
-            Vector3 position = spawnPositions[randomIndex];
-            //Create an object and remove potential spawn location from the pool
-            Instantiate(toPlace, new Vector3(position.x, yAxisHeight, position.z), Quaternion.identity, parent);
-            spawnPositions.RemoveAt(randomIndex);
-            howMany--;
-        }
+        //Get size of board
+        boardX = board.transform.localScale.x;
+        boardZ = board.transform.localScale.z;
+
+        //Adjust scale to co-ordinates in world (5 small squares per half of plane) - each increment of 1 on scale increases by 5 small squares on each side
+        boardX *= 5;
+        boardZ *= 5;
+        boardX--;
+        boardZ--;
     }
 
     /// <summary>
@@ -109,4 +92,23 @@ public class BoardManager : MonoBehaviour {
             }
         }
     }
+
+    /// <summary>
+    /// Randomly spawn objects on the board using the potential spawnPositions list. Remove points from list once assigned to.
+    /// </summary>
+    /// <param name="toPlace"></param>
+    /// <param name="yAxisHeight"></param>
+    /// <param name="parent"></param>
+    /// <param name="howMany"></param>
+    private void PlaceObjects(Transform toPlace, float yAxisHeight, Transform parent, int howMany)
+    {
+        while (spawnPositions.Count >= 0 && howMany > 0)   
+        {
+            int randomIndex = Random.Range(0, spawnPositions.Count);
+            Vector3 position = spawnPositions[randomIndex];
+            Instantiate(toPlace, new Vector3(position.x, yAxisHeight, position.z), Quaternion.identity, parent);
+            spawnPositions.RemoveAt(randomIndex);
+            howMany--;
+        }
+    }   
 }
