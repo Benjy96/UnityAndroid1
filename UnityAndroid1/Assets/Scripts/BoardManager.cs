@@ -37,10 +37,10 @@ public class BoardManager : MonoBehaviour {
         MarkSpawnPoints();
         // TODO: Implement way of dynamically calculating the maximum number of objects that can be placed on the board
         // TODO: Implement difficulty system that then affects the above max number (for guards)
-        PlaceObjects(player, 1f, null, 1);
-        PlaceObjects(wallObject, 2.5f, wallParent, 5);
-        PlaceObjects(guard, 1f, guardHolder, 10);   // TODO: Need the howMany to be done with a difficulty variable
-        PlaceObjects(waypoint, .5f, pathHolder, spawnPositions.Count);      //DO LAST: Fill the rest of the board with waypoints
+        PlaceObjects(null, 1f, null, 1, true);  //Spawns player (start) and finish (end) points.
+        PlaceObjects(wallObject, 2.5f, wallParent, 5, false);
+        PlaceObjects(guard, 1f, guardHolder, 10, false);   // TODO: Need the howMany to be done with a difficulty variable
+        PlaceObjects(waypoint, .5f, pathHolder, spawnPositions.Count, false);      //DO LAST: Fill the rest of the board with waypoints
     }
 
     private void CalculateBoardSize()
@@ -107,14 +107,30 @@ public class BoardManager : MonoBehaviour {
     /// <param name="yAxisHeight"></param>
     /// <param name="parent"></param>
     /// <param name="howMany"></param>
-    private void PlaceObjects(Transform toPlace, float yAxisHeight, Transform parent, int howMany)
+    private void PlaceObjects(Transform toPlace, float yAxisHeight, Transform parent, int howMany, bool firstPoints)
     {
         while (spawnPositions.Count >= 0 && howMany > 0)   
         {
-            int randomIndex = Random.Range(0, spawnPositions.Count);
-            Vector3 position = spawnPositions[randomIndex];
-            Instantiate(toPlace, new Vector3(position.x, yAxisHeight, position.z), Quaternion.identity, parent);
-            spawnPositions.RemoveAt(randomIndex);
+            if (firstPoints)  //Set start and end points
+            {
+                //Spawn player at start of board
+                int startPointIndex = (spawnPositions.Count / 4) - 1;   //Board is made of four quadrants
+                Vector3 startPoint = spawnPositions[startPointIndex];
+                Instantiate(player, new Vector3(startPoint.x, yAxisHeight, startPoint.z), Quaternion.identity, parent);
+                spawnPositions.RemoveAt(startPointIndex);
+                //Spawn finish point at end of the board
+                int endPointIndex = spawnPositions.Count - 1;
+                Vector3 endPoint = spawnPositions[endPointIndex];
+                Instantiate(finishPoint, new Vector3(endPoint.x, endPoint.y, endPoint.z), Quaternion.identity, null);
+                spawnPositions.RemoveAt(endPointIndex);
+            }
+            else
+            {
+                int randomIndex = Random.Range(0, spawnPositions.Count);
+                Vector3 position = spawnPositions[randomIndex];
+                Instantiate(toPlace, new Vector3(position.x, yAxisHeight, position.z), Quaternion.identity, parent);
+                spawnPositions.RemoveAt(randomIndex);
+            }
             howMany--;
         }
     }   
