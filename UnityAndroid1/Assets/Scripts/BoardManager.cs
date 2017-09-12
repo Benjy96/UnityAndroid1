@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public class BoardManager : MonoBehaviour {
 
-    private readonly int NumPositions;  //Constant calculated at runtime - equivalent to FINAL in java - const in C++
+    private int numPositions;
     
     //Board and its size along horizontal/vertical
     public GameObject board;
@@ -38,9 +38,11 @@ public class BoardManager : MonoBehaviour {
 
         spawnPositions = new List<Vector3>();
         MarkSpawnPoints();
+        numPositions = CalculateNumSpawnPoints();
+        print(numPositions);
 
         // TODO: Need code to place player and walls before the waypoints, and mark their position so that waypoint skips over them when looping
-        PlaceObjects(waypoint, .5f, pathHolder);
+        //PlaceObjects(waypoint, .5f, pathHolder);
     }
 
     private void PlaceObjects(Transform toPlace, float yAxisHeight, Transform parent, int howMany)
@@ -98,9 +100,12 @@ public class BoardManager : MonoBehaviour {
                 spawnPositions.Add(new Vector3(i, 0f, j));
             }
         }
-
-        // TODO: Add method for calculating number of positions at runtime
         calculateNumBoardPositions *= 4;
+        print(calculateNumBoardPositions);  //Test vs List count for debug purposes - just checking for potential index offset
+    }
 
+    private int CalculateNumSpawnPoints()
+    {
+        return spawnPositions.Count;
     }
 }
