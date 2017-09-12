@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// SINGLETON - Guard owned state
+/// SINGLETON - One shared state instance.
+/// Guard owned state for chasing the player. (Navmesh?)
 /// </summary>
 public class ChaseState : State<Guard>
 {

@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Guard is an agent. 
+/// UML:
+/// Agent   HAS attributes and
+///         OWNS a finite state machine (Composite aggregation) that manages its states. States contain logic to modify attributes/make agent act.
+///         
+/// Agent calls FSM update every frame.
+/// </summary>
 public class Guard : MonoBehaviour {
     
     //Instance of a Finite State Machine

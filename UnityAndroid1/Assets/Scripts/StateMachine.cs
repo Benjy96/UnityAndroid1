@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This class provides some abstraction.
-/// The Finite State Machine manages the states of an agent/entity.
+/// The Finite State Machine manages the states of an agent/entity (does it FOR them - abstraction/separation).
 /// Agent just needs to own a StateMachine instance. (Composition)
 /// The generics mean we can reuse this class. E.g. Any called state will have access to public interface of the object. E.g. spotlight attribute on a guard passed in with execute method. Owner.spotlight.
+/// 
+/// UML:
+/// Finite state machine    HAS attributes (in this case, states) that it manages
+/// 
+/// Theory of Finite State Machine: 
+/// FSM manages states. Stores these as "data" to be modified, which happens via an agent's states calling a method such as ChangeState();
 /// </summary>
 /// <typeparam name="entity_type">The object that owns this statemachine</typeparam>
 public class StateMachine<entity_type> {

@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// SINGLETON - Guard owned state
+/// SINGLETON - One shared instance.
+/// Guard owned state for following waypoints and searching for player.
 /// </summary>
 public class PatrolState : State<Guard> {
 

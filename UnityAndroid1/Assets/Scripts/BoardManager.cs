@@ -39,13 +39,13 @@ public class BoardManager : MonoBehaviour {
         spawnPositions = new List<Vector3>();
         MarkSpawnPoints();
 
-        //Need code to place player and walls before the waypoints, and mark their position so that waypoint skips over them when looping
+        // TODO: Need code to place player and walls before the waypoints, and mark their position so that waypoint skips over them when looping
         PlaceObjects(waypoint, .5f, pathHolder);
     }
 
     private void PlaceObjects(Transform toPlace, float yAxisHeight, Transform parent, int howMany)
     {
-        while (spawnPositions.Count >= 0 && howMany > 0)   //Need a condition for how long to continue
+        while (spawnPositions.Count >= 0 && howMany > 0)   
         {
             //Get a random spawn position
             int randomIndex = Random.Range(0, spawnPositions.Count);
@@ -99,6 +99,7 @@ public class BoardManager : MonoBehaviour {
             }
         }
 
+        // TODO: Add method for calculating number of positions at runtime
         calculateNumBoardPositions *= 4;
 
     }
