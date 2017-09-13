@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: Add mobile controls: tap point to move to it
+// TODO: Add pc controls: mouse click to move to point
 public class PlayerController : MonoBehaviour {
 
     Rigidbody rb;
@@ -18,6 +20,6 @@ public class PlayerController : MonoBehaviour {
 
     private void MoveInDirection()
     {
-        //TODO: Implement a navmesh move method
+        //TODO: Implement a navmesh move method (will auto-pathfind)
     }
 }

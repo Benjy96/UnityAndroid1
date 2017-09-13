@@ -46,6 +46,7 @@ public class BoardManager : MonoBehaviour {
         PlaceObjects(waypoint, .5f, pathHolder, spawnPositions.Count, false);      //DO LAST: Fill the rest of the board with waypoints
     }
 
+    // TODO: Check whether or not I need an array of marked points - not currently using. Could be used potentially for nonblocking objects (i.e. not walls)
     private bool ReservedPointCheck(float x, float z)
     {
         float zSize = CalculateUsableBoardZSize();
