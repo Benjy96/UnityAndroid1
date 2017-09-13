@@ -50,7 +50,7 @@ public class BoardManager : MonoBehaviour {
     private bool ReservedPointCheck(float x, float z)
     {
         float zSize = CalculateUsableBoardZSize();
-        if(x == 0 && z == zSize || x == 0 && z == -zSize || x == 0)
+        if(x >= 15 && z == zSize || x <= -15 && z == -zSize)
         {
             reservedPath.Add(new Vector3(x, 0f, z));
             return true;
