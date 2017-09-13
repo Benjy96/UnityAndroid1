@@ -46,7 +46,6 @@ public class BoardManager : MonoBehaviour {
         PlaceObjects(waypoint, .5f, pathHolder, spawnPositions.Count, false);      //DO LAST: Fill the rest of the board with waypoints
     }
 
-    // TODO: Calculate the end and midpoints of the board dynamically
     private bool ReservedPointCheck(float x, float z)
     {
         float zSize = CalculateUsableBoardZSize();
