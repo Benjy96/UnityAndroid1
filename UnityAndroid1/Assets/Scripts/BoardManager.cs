@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: Add a method to stop walls blocking a path to the finish line when player spawns in - maybe one straight path to player reserved?
+// Reserve 0 x axis (middle)
+//35 on z is player start
+//-35 is finish
 /// <summary>
 /// Will instantiate player, guards, and obstacles within this script.
 /// This will allow me to check whether or not a space is taken, and allow me to choose
 /// whether or not a waypoint should be placed there. (Waypoints should only go in free space.)
 /// </summary>
 public class BoardManager : MonoBehaviour {
+
+    private List<Vector3> reservedPath; 
     
     //Board and its size along horizontal/vertical
     public GameObject board;
@@ -32,8 +38,9 @@ public class BoardManager : MonoBehaviour {
 
     void Start()
     {
-        CalculateBoardSize();
+        reservedPath = new List<Vector3>();
         spawnPositions = new List<Vector3>();
+        CalculateBoardSize();
         MarkSpawnPoints();
         // TODO: Implement way of dynamically calculating the maximum number of objects that can be placed on the board
         // TODO: Implement difficulty system that then affects the above max number (for guards)
@@ -41,6 +48,16 @@ public class BoardManager : MonoBehaviour {
         PlaceObjects(wallObject, 2.5f, wallParent, 5, false);
         PlaceObjects(guard, 1f, guardHolder, 10, false);   // TODO: Need the howMany to be done with a difficulty variable
         PlaceObjects(waypoint, .5f, pathHolder, spawnPositions.Count, false);      //DO LAST: Fill the rest of the board with waypoints
+    }
+
+    private bool ReservedPointCheck(float x, float z)
+    {
+        if(x == 0 && z == 35 || x == 0 && z == -35)
+        {
+            reservedPath.Add(new Vector3(x, 0f, z));
+            return true;
+        }
+        return false;
     }
 
     private void CalculateBoardSize()
@@ -68,6 +85,10 @@ public class BoardManager : MonoBehaviour {
         {
             for (int j = 0; j <= boardZ; j += 5)
             {
+                if(ReservedPointCheck(i, j))
+                {
+                    continue;
+                }
                 spawnPositions.Add(new Vector3(i, 0f, j));
             }
         }
@@ -77,6 +98,10 @@ public class BoardManager : MonoBehaviour {
         {
             for (int j = 0; j <= boardZ; j += 5)
             {
+                if (ReservedPointCheck(i, j))
+                {
+                    continue;
+                }
                 spawnPositions.Add(new Vector3(i, 0f, j));
             }
         }
@@ -86,6 +111,10 @@ public class BoardManager : MonoBehaviour {
         {
             for (int j = 0; j >= -boardZ; j -= 5)
             {
+                if (ReservedPointCheck(i, j))
+                {
+                    continue;
+                }
                 spawnPositions.Add(new Vector3(i, 0f, j));
             }
         }
@@ -95,6 +124,10 @@ public class BoardManager : MonoBehaviour {
         {
             for (int j = 0; j >= -boardZ; j -= 5)
             {
+                if (ReservedPointCheck(i, j))
+                {
+                    continue;
+                }
                 spawnPositions.Add(new Vector3(i, 0f, j));
             }
         }

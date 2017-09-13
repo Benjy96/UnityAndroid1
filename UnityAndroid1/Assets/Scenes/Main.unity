@@ -185,6 +185,7 @@ MonoBehaviour:
   wallObject: {fileID: 4247864184063570, guid: 59b37c309f527cd4580618f30293353c, type: 2}
   finishPoint: {fileID: 4170352357442554, guid: 5665f3a13fae6464aa86ca9a4736e7bd,
     type: 2}
+  guardHolder: {fileID: 571164609}
   guard: {fileID: 4604025108775850, guid: 26155e6968a620043911224c6aef0654, type: 2}
 --- !u!4 &387303510
 Transform:
@@ -199,6 +200,34 @@ Transform:
   - {fileID: 763494243}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &571164608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 571164609}
+  m_Layer: 0
+  m_Name: Guards
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &571164609
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 571164608}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.8811092, y: -1.3915892, z: -8.645245}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &763494242
 GameObject:
