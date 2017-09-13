@@ -15,8 +15,12 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+    #if UNITY_STANDALONE || UNITY_WEBPLAYER
+        // TODO: Implement PC Code
+    #else
+        // TODO: Implement Mobile Code
+    #endif
+    }
 
     private void MoveInDirection()
     {
