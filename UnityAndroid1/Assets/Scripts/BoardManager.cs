@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO: Add a method to stop walls blocking a path to the finish line when player spawns in - maybe one straight path to player reserved?
-// Reserve 0 x axis (middle)
-//35 on z is player start
-//-35 is finish
 /// <summary>
 /// Will instantiate player, guards, and obstacles within this script.
 /// This will allow me to check whether or not a space is taken, and allow me to choose
@@ -50,14 +46,24 @@ public class BoardManager : MonoBehaviour {
         PlaceObjects(waypoint, .5f, pathHolder, spawnPositions.Count, false);      //DO LAST: Fill the rest of the board with waypoints
     }
 
+    // TODO: Calculate the end and midpoints of the board dynamically
     private bool ReservedPointCheck(float x, float z)
     {
-        if(x == 0 && z == 35 || x == 0 && z == -35)
+        float zSize = CalculateUsableBoardZSize();
+        if(x == 0 && z == zSize || x == 0 && z == -zSize || x == 0)
         {
             reservedPath.Add(new Vector3(x, 0f, z));
             return true;
         }
         return false;
+    }
+
+    private float CalculateUsableBoardZSize()
+    {
+        float temp = board.transform.localScale.z;
+        temp *= 5;
+        temp -= 5;
+        return temp;
     }
 
     private void CalculateBoardSize()
