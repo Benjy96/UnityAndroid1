@@ -50,20 +50,13 @@ public class BoardManager : MonoBehaviour {
     private bool ReservedPointCheck(float x, float z)
     {
         float zSize = CalculateUsableBoardZSize();
+        //Player's side to mid || Finish's side to mid
         if(x >= 15 && z == zSize || x <= -15 && z == -zSize)
         {
             reservedPath.Add(new Vector3(x, 0f, z));
             return true;
         }
         return false;
-    }
-
-    private float CalculateUsableBoardZSize()
-    {
-        float temp = board.transform.localScale.z;
-        temp *= 5;
-        temp -= 5;
-        return temp;
     }
 
     private void CalculateBoardSize()
@@ -77,6 +70,14 @@ public class BoardManager : MonoBehaviour {
         boardZ *= 5;
         boardX--;
         boardZ--;
+    }
+
+    private float CalculateUsableBoardZSize()
+    {
+        float temp = board.transform.localScale.z;
+        temp *= 5;
+        temp -= 5;
+        return temp;
     }
 
     /// <summary>
